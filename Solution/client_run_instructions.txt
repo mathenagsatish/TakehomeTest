@@ -1,0 +1,59 @@
+Every run prints total execution time in seconds at the end.
+You can increase concurrency to stress-test, but watch for OS limits
+
+Usage: ./tlv_client <port> <mode> [options]
+Modes:
+  short                One short-lived client
+  long [duration] [interval]
+                       Long-lived client (default 30s, TLV every 5s)
+  burst [count] [size] Burst of Data TLVs (default 100x16B)
+  oversized            Send TLV with absurd length
+  truncated            Send incomplete TLV
+  unknown              Send TLV with unknown type
+  mixed                Send a mixture of valid/invalid TLVs
+  scenario [short] [long] [buggy_short] [buggy_long]
+                       Mixed workload (defaults: 10 5 5 5)
+					   
+					   
+Examples
+1. Short-lived clients
+------------------------
+1 short client
+./tlv_client 5111 short
+
+50 parallel short clients
+./tlv_client 5111 short 50
+
+2. Long-lived clients
+--------------------------
+1 long client, runs 30s, sending every 5s
+./tlv_client 5111 long
+
+20 long clients, each 60s, TLV every 10s
+./tlv_client 5111 long 20 60 10
+
+3. Burst clients
+------------------
+1 burst client, 100 TLVs of 15 bytes (default)
+./tlv_client 5111 burst
+
+100 burst clients, each sends 1000 TLVs of 64 bytes
+./tlv_client 5111 burst 100 1000 64
+
+4. Mixed clients
+---------------------
+1 mixed client
+./tlv_client 5111 mixed
+
+20 parallel mixed clients
+./tlv_client 5111 mixed 20
+
+5. Scenario (combination)
+--------------------------------
+Default mix: 10 short, 5 long, 5 buggy short, 5 buggy long
+./tlv_client 5111 scenario
+
+Custom mix: 50 short, 20 long, 10 buggy short, 10 buggy long
+./tlv_client 5111 scenario 50 20 10 10
+
+
