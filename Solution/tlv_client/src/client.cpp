@@ -57,7 +57,6 @@ void TLVClient::run_short() {
 }
 
 void TLVClient::run_long(int duration, int interval) {
-	int val=120;
     connect_server();
     send_tlv(0xE110, "");
     for (int t = 0; t < duration; t += interval) {
