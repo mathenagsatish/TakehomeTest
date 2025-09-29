@@ -80,7 +80,7 @@ int main(int argc, char* argv[]) {
 			int short_clients = (argc > 3) ? std::atoi(argv[3]) : 10;
 			int long_clients = (argc > 4) ? std::atoi(argv[4]) : 5;
 			int buggy_short  = (argc > 5) ? std::atoi(argv[5]) : 5;
-			int buggy_long   = (argc > 7) ? std::atoi(argv[7]) : 5;
+			int buggy_long   = (argc > 6) ? std::atoi(argv[6]) : 5;
 
 			std::vector<std::thread> threads;
 		
