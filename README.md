@@ -13,6 +13,7 @@ Connections are closed
 ## Build
 ### Server
 #### Cmake
+    # go to tlv_server folder
     mkdir build && cd build
     cmake ..
     make
@@ -31,6 +32,7 @@ The tlv_client is a TCP client that connects to a server using sockets, formats 
 
 ## Build
 #### Client
+    # go to tlv_client folder
     mkdir build && cd build
     cmake ..
     make
